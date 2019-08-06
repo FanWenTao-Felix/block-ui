@@ -39,7 +39,7 @@ var webpackConfig = merge(baseWebpackConfig, {
         warnings: false
       }
     }),
-    new webpack.optimize.OccurrenceOrderPlugin(),
+    // new webpack.optimize.OccurrenceOrderPlugin(),
     // extract css into its own file
     /* 将 css 文件分离出来 */
     new ExtractTextPlugin(utils.assetsPath('css/[name].[contenthash].css')),
