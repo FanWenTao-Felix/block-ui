@@ -6,6 +6,8 @@ import Vue from 'vue'
 import App from './App'
 
 // import router from 'router'
+import router from './router/router'
+import store from './store'
 
 // element-ui
 import ElementUI from 'element-ui'
@@ -19,7 +21,7 @@ Vue.config.devtools = true
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
-  data: {
-  },
+  router,
+  store,
   render: r => r(App)
 })
