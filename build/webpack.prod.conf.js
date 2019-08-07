@@ -21,12 +21,12 @@ var webpackConfig = merge(baseWebpackConfig, {
     filename: utils.assetsPath('js/[name].[chunkhash].js'),
     chunkFilename: utils.assetsPath('js/[id].[chunkhash].js')
   },
-  vue: {
+/*  vue: {
     loaders: utils.cssLoaders({
       sourceMap: config.build.productionSourceMap,
       extract: true
     })
-  },
+  },*/
   plugins: [
     // http://vuejs.github.io/vue-loader/en/workflow/production.html
     /* definePlugin 接收字符串插入到代码当中, 所以你需要的话可以写上 JS 的字符串 */

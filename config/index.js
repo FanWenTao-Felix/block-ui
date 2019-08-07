@@ -25,6 +25,7 @@ module.exports = {
     dev: {
         env: require('./dev.env'),
         port: 80,
+        autoOpenBrowser: true,
         assetsSubDirectory: 'static',
         assetsPublicPath: '/',
         // 需要 proxyTable 代理的接口（可跨域）

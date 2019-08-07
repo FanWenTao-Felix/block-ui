@@ -29,7 +29,7 @@ module.exports = {
         ? config.build.assetsPublicPath : config.dev.assetsPublicPath
     },
     resolve: {
-        extensions: ['', '.js', '.vue', '.json'],
+        extensions: ['*', '.js', '.vue', '.json'],
         // fallback: [path.join(__dirname, '../node_modules')],
         alias: {
             'vue$': 'vue/dist/vue.common.js',
