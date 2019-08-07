@@ -1,3 +1,8 @@
+/**
+ * 设置静态文件的公共路径，用于修改src属性的值
+ * css加载器的相关配置
+ * 对.vue文件之外的css文件或css预处理器文件进行处理
+ */
 var path = require('path')
 var config = require('../config')
 var ExtractTextPlugin = require('extract-text-webpack-plugin')

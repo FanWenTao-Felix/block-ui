@@ -1,3 +1,6 @@
+/**
+ * 监听dev-server.js中webpack-hot-middleware发布的事件并作相应的处理
+ */
 // 通常polyfill来填平旧浏览器一些事件支持上的缺陷
 require('eventsource-polyfill')
 var hotClient = require('webpack-hot-middleware/client?noInfo=true&reload=true')

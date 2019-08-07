@@ -1,39 +1,35 @@
+/**
+ * 配置webpack编译入口
+ * 配置webpack输出路径、名称和静态文件路径
+ * 配置不同模块的处理规则与命名规则
+ */
 var path = require('path')
 var config = require('../config')
 var utils = require('./utils')
 var vueLoaderConfig = require('./vue-loader.conf')
-// var projectRoot = path.resolve(__dirname, '../')
-// const webpack = require("webpack")
 
-var env = process.env.NODE_ENV
-// check env & config/index.js to decide whether to enable CSS source maps for the
-// various preprocessor loaders added to vue-loader at the end of this file
-var cssSourceMapDev = (env === 'development' && config.dev.cssSourceMap)
-var cssSourceMapProd = (env === 'production' && config.build.productionSourceMap)
-var useCssSourceMap = cssSourceMapDev || cssSourceMapProd
-
-function resolve (dir) {
+// 获取根目录
+function resolve(dir) {
     return path.join(__dirname, '..', dir)
 }
 
 module.exports = {
-    //运行环境的上下文，就是实际的目录
-    // context: path.resolve(__dirname, '../'),
     entry: {
         app: './src/main.js'
     },
     output: {
-      path: config.build.assetsRoot,
-      filename: '[name].js',
-      publicPath: process.env.NODE_ENV === 'production'
-        ? config.build.assetsPublicPath : config.dev.assetsPublicPath
+        path: config.build.assetsRoot,
+        filename: '[name].js',
+        publicPath: process.env.NODE_ENV === 'production'
+            ? config.build.assetsPublicPath : config.dev.assetsPublicPath
     },
     resolve: {
+        // 自动解析拓展，可以在引用文件的时候不用写后缀
         extensions: ['*', '.js', '.vue', '.json'],
         // fallback: [path.join(__dirname, '../node_modules')],
         alias: {
-            'vue$': 'vue/dist/vue.common.js',
-            'src': path.resolve(__dirname, '../src'),
+            'vue$': 'vue/dist/vue.esm.js',
+            '@': path.resolve(__dirname, '../src'),
             'assets': path.resolve(__dirname, '../src/assets'),
             'components': path.resolve(__dirname, '../src/components')
         }
@@ -43,10 +39,10 @@ module.exports = {
     },
     module: {
         rules: [{
-                test: /\.vue$/,
-                loader: 'vue-loader',
-                // options: vueLoaderConfig
-            },
+            test: /\.vue$/,
+            loader: 'vue-loader',
+            options: vueLoaderConfig
+        },
             {
                 test: /\.js$/,
                 loader: 'babel-loader',
@@ -78,16 +74,5 @@ module.exports = {
                 }
             }
         ]
-    },
-/*    eslint: {
-        formatter: require('eslint-friendly-formatter')
-    },
-    vue: {
-        loaders: utils.cssLoaders({ sourceMap: useCssSourceMap }),
-        postcss: [
-            require('autoprefixer')({
-                browsers: ['last 2 versions']
-            })
-        ]
-    }*/
+    }
 }

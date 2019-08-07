@@ -1,3 +1,13 @@
+/**
+ 1 检查npm与node的版本
+ 2 引入相关插件和配置
+ 3 创建express服务器和webpack编译器
+ 4 配置开发中间件（webpack-dev-middleware）和热重载中间件（webpack-hot-middleware）
+ 5 挂载代理服务和中间件
+ 6 配置静态资源
+ 7 启动服务器监听特定端口（8080）
+ 8 自动打开浏览器并打开特定网址（localhost:8080）
+ */
 // 检查 Node 和 npm 版本
 require('./check-versions')()
 var config = require('../config')
