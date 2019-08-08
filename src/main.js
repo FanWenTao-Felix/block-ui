@@ -4,14 +4,10 @@ import 'babel-polyfill'
 
 import Vue from 'vue'
 import App from './App'
-
-// import router from 'router'
 import router from './router/router'
 import store from './store'
-
-// element-ui
 import ElementUI from 'element-ui'
-// import 'element-ui/lib/theme-chalk/index.css'
+import './assets/scss/common.scss'
 
 Vue.use(ElementUI)
 

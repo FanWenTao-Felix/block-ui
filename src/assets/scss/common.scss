@@ -1,23 +1,23 @@
 // 全局变量
-@import './variables.scss';
+@import 'variables';
 // ele样式覆盖
-@import './element-ui.scss';
+@import 'element-ui';
 // 顶部右侧显示
-@import './top.scss';
+@import 'top';
 // 导航标签
-@import './tags.scss';
+@import 'tags';
 // 工具类函数
-@import './mixin.scss';
+@import 'mixin';
 // 侧面导航栏
-@import './sidebar.scss';
+@import 'sidebar';
 // 动画
 @import './animate/vue-transition.scss';
 //主题
 @import './theme/index.scss';
 //适配
-@import './media.scss';
+@import 'media';
 //通用配置
-@import './normalize.scss';
+@import 'normalize';
 
 a{
   text-decoration: none;
