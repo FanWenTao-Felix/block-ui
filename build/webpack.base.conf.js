@@ -32,7 +32,7 @@ module.exports = {
       '@': path.resolve(__dirname, '../src'),
       'assets': path.resolve(__dirname, '../src/assets'),
       'components': path.resolve(__dirname, '../src/components'),
-      'styles': path.resolve(__dirname, '../src/styles')
+      'mock': resolve('mock')
     }
   },
   resolveLoader: {
@@ -56,7 +56,7 @@ module.exports = {
       {
         test: /\.js$/,
         loader: 'babel-loader',
-        include: [resolve('src'), resolve('test')],
+        include: [resolve('src'), resolve('test'), resolve('mock')],
         exclude: /node_modules/
       },
       {
