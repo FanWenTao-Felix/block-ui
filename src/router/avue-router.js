@@ -1,4 +1,3 @@
-
 let RouterPlugin = function () {
   this.$router = null
   this.$store = null
@@ -7,10 +6,12 @@ RouterPlugin.install = function (vue, router, store, i18n) {
   this.$router = router
   this.$store = store
   // eslint-disable-next-line new-cap
-  this.$vue = new vue({ i18n })
+  this.$vue = new vue({i18n})
+
   function isURL (s) {
-    return /^http[s]?:\/\/.*/.test(s)
+    return /^http[s]?:\/\/.*!/.test(s)
   }
+
   function objToform (obj) {
     let result = []
     Object.keys(obj).forEach(ele => {
@@ -18,6 +19,7 @@ RouterPlugin.install = function (vue, router, store, i18n) {
     })
     return result.join('&')
   }
+
   this.$router.$avueRouter = {
     // 全局配置
     $website: this.$store.getters.website,
@@ -77,6 +79,78 @@ RouterPlugin.install = function (vue, router, store, i18n) {
         value = route.path
       }
       return value
+    },
+    // 动态路由
+    formatRoutes: function (aMenu = [], first) {
+      const aRouter = []
+      const propsConfig = this.$website.menu.props
+      const propsDefault = {
+        label: propsConfig.label || 'name',
+        path: propsConfig.path || 'path',
+        icon: propsConfig.icon || 'icon',
+        children: propsConfig.children || 'children',
+        meta: propsConfig.meta || 'meta'
+      }
+      if (aMenu.length === 0) return
+      for (let i = 0; i < aMenu.length; i++) {
+        const oMenu = aMenu[i]
+        if (this.routerList.includes(oMenu[propsDefault.path])) return
+        // eslint-disable-next-line one-var
+        const path = (() => {
+            if (first) {
+              return oMenu[propsDefault.path].replace('/index', '')
+            } else {
+              return oMenu[propsDefault.path]
+            }
+          })(),
+          // 特殊处理组件
+          component = 'views' + oMenu.path,
+          name = oMenu[propsDefault.label],
+          icon = oMenu[propsDefault.icon],
+          children = oMenu[propsDefault.children],
+          meta = oMenu[propsDefault.meta] || {}
+
+        const isChild = children.length !== 0
+        const oRouter = {
+          path: path,
+          component (resolve) {
+          },
+          name: name,
+          icon: icon,
+          meta: meta,
+          redirect: (() => {
+            if (!isChild && first && !isURL(path)) return `${path}/index`
+            else return ''
+          })(),
+          // 处理是否为一级路由
+          children: !isChild ? (() => {
+            if (first) {
+              if (!isURL(path)) oMenu[propsDefault.path] = `${path}/index`
+              return [{
+                component (resolve) {
+                  require([`../${component}.vue`], resolve)
+                },
+                icon: icon,
+                name: name,
+                meta: meta,
+                path: 'index'
+              }]
+            }
+            return []
+          })() : (() => {
+            return this.formatRoutes(children, false)
+          })()
+        }
+        aRouter.push(oRouter)
+      }
+      if (first) {
+        if (!this.routerList.includes(aRouter[0][propsDefault.path])) {
+          this.safe.$router.addRoutes(aRouter)
+          this.routerList.push(aRouter[0][propsDefault.path])
+        }
+      } else {
+        return aRouter
+      }
     }
   }
 }

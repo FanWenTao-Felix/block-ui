@@ -31,8 +31,7 @@ module.exports = {
       'vue$': 'vue/dist/vue.esm.js',
       '@': path.resolve(__dirname, '../src'),
       'assets': path.resolve(__dirname, '../src/assets'),
-      'components': path.resolve(__dirname, '../src/components'),
-      'mock': resolve('mock')
+      'components': path.resolve(__dirname, '../src/components')
     }
   },
   resolveLoader: {
@@ -54,9 +53,13 @@ module.exports = {
         ]
       },
       {
+        test: /\.css$/,
+        use: [ 'style-loader', 'css-loader' ]
+      },
+      {
         test: /\.js$/,
         loader: 'babel-loader',
-        include: [resolve('src'), resolve('test'), resolve('mock')],
+        include: [resolve('src'), resolve('test')],
         exclude: /node_modules/
       },
       {

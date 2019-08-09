@@ -1,6 +1,8 @@
 import {validatenull} from '@/util/validate'
+import website from '@/config/website'
 
-const keyName = '-'
+const keyName = website.key + '-'
+
 /**
  * 存储localStorage
  */

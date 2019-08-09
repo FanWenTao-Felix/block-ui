@@ -12,7 +12,6 @@
                     <!-- 左侧导航栏 -->
                 </div>
                 <div class="avue-main">
-                    333
                     <!-- 顶部标签卡 -->
                     <!-- 主体视图层 -->
                     <el-scrollbar style="height:100%">

@@ -4,7 +4,7 @@
             <div class="avue-breadcrumb"
                  :class="[{ 'avue-breadcrumb--active': isCollapse }]"
                  v-if="showCollapse">
-                <i class="icon-navicon"
+                <i class="iconfont icon-cf-c57"
                    @click="setCollapse"></i>
             </div>
         </div>
@@ -22,10 +22,12 @@
 <script>
   import {mapGetters, mapState} from 'vuex'
   import topMenu from './top-menu'
+  import topTheme from './top-theme'
 
-export default {
+  export default {
     components: {
-      topMenu
+      topMenu,
+      topTheme
     },
     name: 'top',
     data () {
@@ -47,6 +49,7 @@ export default {
     },
     methods: {
       setCollapse () {
+        this.$store.commit('SET_COLLAPSE')
       }
     }
   }
