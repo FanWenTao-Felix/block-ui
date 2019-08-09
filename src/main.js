@@ -29,5 +29,6 @@ Vue.config.devtools = true
 new Vue({
   router,
   store,
+  i18n,
   render: r => r(App)
 }).$mount('#app')
