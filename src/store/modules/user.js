@@ -1,4 +1,4 @@
-import {getStore} from '@/util/store'
+import { setStore, getStore } from '@/util/store'
 import {isURL, validatenull} from '@/util/validate'
 import {deepClone} from '@/util/util'
 import webiste from '@/config/website'
@@ -54,14 +54,18 @@ const user = {
     GetTopMenu () {
       return new Promise(resolve => {
         getTopMenu().then((res) => {
-          console.log('-------', res)
           const data = res.data.data || []
           resolve(data)
         })
       })
     }
   },
-  mutations: {}
+  mutations: {
+    SET_MENU: (state, menu) => {
+      state.menu = menu
+      setStore({name: 'menu', content: state.menu, type: 'session'})
+    }
+  }
 }
 
 export default user

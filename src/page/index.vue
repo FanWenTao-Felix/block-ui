@@ -14,14 +14,15 @@
                 <div class="avue-main">
                     <!-- 顶部标签卡 -->
                     <!-- 主体视图层 -->
-                    <el-scrollbar style="height:100%">
+                    <router-view></router-view>
+<!--                    <el-scrollbar style="height:100%">
                         <keep-alive>
                             <router-view class="avue-view"
                                          v-if="$route.meta.keepAlive"></router-view>
                         </keep-alive>
                         <router-view class="avue-view"
                                      v-if="!$route.meta.keepAlive"></router-view>
-                    </el-scrollbar>
+                    </el-scrollbar>-->
                 </div>
             </div>
         </div>
