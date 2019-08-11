@@ -1,0 +1,15 @@
+@import './box.scss';
+@import './tabs.scss';
+@import './progress.scss';
+@import './icons.scss';
+
+[class^="avue-data-"]{
+  a{
+    text-decoration: none;
+  }
+}
+[class^="data-"]{
+  a{
+    text-decoration: none;
+  }
+}

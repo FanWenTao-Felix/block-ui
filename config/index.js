@@ -31,7 +31,7 @@ module.exports = {
         // 需要 proxyTable 代理的接口（可跨域）
         proxyTable: {
             '/api': {
-                target: 'https://easy-mock.com/mock/5d4cd605663ad217c6e9c775/example',
+                target: 'https://easy-mock.com/mock/5d4e412ac948ee75500af70c/example',
                 changeOrigin: true,
                 pathRewrite: {
                     '^/api': ''

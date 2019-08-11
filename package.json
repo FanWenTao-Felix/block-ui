@@ -16,6 +16,7 @@
   "dependencies": {
     "axios": "^0.16.2",
     "babel-polyfill": "^6.26.0",
+    "countup.js": "^2.0.4",
     "echarts": "^4.1.0",
     "element-ui": "^2.11.1",
     "eventsource-polyfill": "^0.9.6",
