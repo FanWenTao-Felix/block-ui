@@ -6,8 +6,12 @@ import Vue from 'vue'
 import App from './App'
 import store from './store'
 import router from './router/router'
-
 import ElementUI from 'element-ui'
+import {
+  iconfontUrl,
+  iconfontVersion
+} from '@/config/env'
+import { loadStyle } from './util/util'
 import './assets/scss/common.scss'
 import 'element-ui/lib/theme-chalk/index.css'
 import './assets/iconfont/iconfont.css'
@@ -22,6 +26,11 @@ Vue.use(ElementUI, {
 
 // 注册全局容器
 Vue.component('basicContainer', basicContainer)
+
+// 动态加载阿里云字体库
+iconfontVersion.forEach(ele => {
+  loadStyle(iconfontUrl.replace('$key', ele))
+})
 
 Vue.config.productionTip = false
 Vue.config.devtools = true
