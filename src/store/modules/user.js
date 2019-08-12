@@ -1,8 +1,9 @@
+import { setToken } from '@/util/auth'
 import { setStore, getStore } from '@/util/store'
 import {isURL, validatenull} from '@/util/validate'
 import {deepClone} from '@/util/util'
 import webiste from '@/config/website'
-import {getMenu, getTopMenu} from '@/api/user'
+import {loginByUsername, getMenu, getTopMenu} from '@/api/user'
 
 function addPath (ele, first) {
   const menu = webiste.menu
@@ -36,6 +37,21 @@ const user = {
     token: getStore({name: 'token'}) || ''
   },
   actions: {
+    // 根据用户名登录
+    LoginByUsername ({ commit }, userInfo) {
+      return new Promise((resolve, reject) => {
+        loginByUsername(userInfo.tenantCode, userInfo.username, userInfo.password, userInfo.type).then(res => {
+          const data = res.data.data
+          commit('SET_TOKEN', data.accessToken)
+          commit('SET_USERIFNO', data)
+          // commit('DEL_ALL_TAG')
+          // commit('CLEAR_LOCK')
+          resolve()
+        }).catch(error => {
+          reject(error)
+        })
+      })
+    },
     // 获取系统菜单
     GetMenu ({commit, dispatch}, parentId) {
       return new Promise(resolve => {
@@ -61,6 +77,15 @@ const user = {
     }
   },
   mutations: {
+    SET_TOKEN: (state, token) => {
+      setToken(token)
+      state.token = token
+      setStore({ name: 'token', content: state.token, type: 'session' })
+    },
+    SET_USERIFNO: (state, userInfo) => {
+      state.userInfo = userInfo
+      setStore({ name: 'userInfo', content: state.userInfo })
+    },
     SET_MENU: (state, menu) => {
       state.menu = menu
       setStore({name: 'menu', content: state.menu, type: 'session'})

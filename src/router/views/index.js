@@ -13,4 +13,14 @@ export default [{
     component: () =>
       import(/* webpackChunkName: "views" */ '@/views/wel')
   }]
+}, {
+  path: '/login',
+  name: '登录页',
+  component: () =>
+    import(/* webpackChunkName: "page" */ '@/views/login/index'),
+  meta: {
+    keepAlive: true,
+    isTab: false,
+    isAuth: false
+  }
 }]

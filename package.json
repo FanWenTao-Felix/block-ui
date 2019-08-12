@@ -21,6 +21,7 @@
     "element-ui": "^2.11.1",
     "eventsource-polyfill": "^0.9.6",
     "jquery": "^3.2.1",
+    "js-cookie": "^2.2.1",
     "mockjs": "^1.0.1-beta3",
     "vertx3-eventbus-client": "^3.5.1",
     "vue": "^2.5.13",
