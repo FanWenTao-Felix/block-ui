@@ -18,9 +18,7 @@ export default create({
       default: 0
     },
     end: {
-      type: Number,
-      required: false,
-      default: 22
+      required: true
     },
     decimals: {
       type: Number,
@@ -71,13 +69,13 @@ export default create({
     init () {
       if (!this.c) {
         this.c = new CountUp(
-          this.$el,
-          this.start,
-          this.end,
-          this.decimals,
-          this.duration,
-          this.options
-        )
+            this.$el,
+            this.start,
+            this.end,
+            this.decimals,
+            this.duration,
+            this.options
+          )
         this.c.start(() => {
           this.callback(this.c)
         })
