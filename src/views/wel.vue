@@ -2,82 +2,108 @@
     <div>
         <div class="wel__header">
             <div class="wel__info">
-              　<img data-v-332773f0="" src="https://gw.alipayobjects.com/zos/rmsportal/BiazfanxmamNRoxxVxka.png"
-                    alt="" class="wel__info-img">
+                　<img data-v-332773f0="" src="https://gw.alipayobjects.com/zos/rmsportal/BiazfanxmamNRoxxVxka.png"
+                      alt="" class="wel__info-img">
                 <div class="wel__info-content">
                     <div class="wel__info-title">
-                        block-ui
+                        {{$t('wel.info')}}
+                    </div>
+                    <div class="wel__info-subtitle">
+                        {{$t('wel.dept')}}
                     </div>
                 </div>
             </div>
-          <div class="wel__extra">
-            <div class="wel__extra-item">
-              <p class="wel__extra-title">
-                56 56
-              </p>
-              <p class="wel__extra-subtitle">
-                56
-              </p>
+            <div class="wel__extra">
+                <div class="wel__extra-item">
+                    <p class="wel__extra-title">
+                        {{ $t('wel.count')}}
+                    </p>
+                    <p class="wel__extra-subtitle">
+                        56
+                    </p>
+                </div>
+                <div class="wel__extra-item">
+                    <p class="wel__extra-title">
+                        {{ $t('wel.team')}}
+                    </p>
+                    <p class="wel__extra-subtitle">
+                        8 <span>/ 24</span>
+                    </p>
+                </div>
+                <div class="wel__extra-item">
+                    <p class="wel__extra-title">
+                        {{ $t('wel.project')}}
+                    </p>
+                    <p class="wel__extra-subtitle">
+                        2,223
+                    </p>
+                </div>
             </div>
-            <div class="wel__extra-item">
-              <p class="wel__extra-title">
-                block-ui
-              </p>
-              <p class="wel__extra-subtitle">
-                8 <span>/ 24</span>
-              </p>
-            </div>
-            <div class="wel__extra-item">
-              <p class="wel__extra-title">
-                block-ui
-              </p>
-              <p class="wel__extra-subtitle">
-                2,223
-              </p>
-            </div>
-          </div>
         </div>
-      <basic-container>
-        <avue-data-box :option="option1"></avue-data-box>
-      </basic-container>
+        <basic-container>
+            <avue-data-box :option="option1"></avue-data-box>
+        </basic-container>
 
-      <el-row :span="24">
-        <el-col :span="18">
-          <basic-container>
-            <avue-data-progress :option="option3"
-                                style="margin-bottom:20px"></avue-data-progress>
-            <avue-data-tabs :option="option"></avue-data-tabs>
-          </basic-container>
-        </el-col>
-        <el-col :span="6">
-          <basic-container>
-            <avue-data-icons :option="option2"></avue-data-icons>
-          </basic-container>
-        </el-col>
-      </el-row>
-      <basic-container>
-<!--    <avue-crud :option="option4"
-                   :data="data">
-        </avue-crud>-->
-      </basic-container>
+        <el-row :span="24">
+            <el-col :span="18">
+                <basic-container>
+                    <avue-data-progress :option="option3"
+                                        style="margin-bottom:20px"></avue-data-progress>
+                    <avue-data-tabs :option="option"></avue-data-tabs>
+                </basic-container>
+            </el-col>
+            <el-col :span="6">
+                <basic-container>
+                    <avue-data-icons :option="option2"></avue-data-icons>
+                </basic-container>
+            </el-col>
+        </el-row>
+        <basic-container>
+            <!--    <avue-crud :option="option4"
+                               :data="data">
+                    </avue-crud>-->
+        </basic-container>
     </div>
 </template>
 
 <script>
+  import {mapGetters} from 'vuex'
   import avueDataBox from '@/components/data-box/main'
   import avueDataProgress from '@/components/data-progress/main'
   import avueDataIcons from '@/components/data-icons/main'
   import avueDataTabs from '@/components/data-tabs/main'
 
   export default {
-    components: { avueDataBox, avueDataProgress, avueDataIcons, avueDataTabs },
+    components: {avueDataBox, avueDataProgress, avueDataIcons, avueDataTabs},
     name: 'wel',
     data () {
       return {
-        data: 123
+        data: [
+          {
+            rw: '这是一条工作任务',
+            nr: '这是一条很长很长很长很长很长很长很长很长很长的工作内容',
+            sj: '2019-01-01'
+          },
+          {
+            rw: '这是一条工作任务',
+            nr: '这是一条很长很长很长很长很长很长很长很长很长的工作内容',
+            sj: '2019-01-01'
+          },
+          {
+            rw: '这是一条工作任务',
+            nr: '这是一条很长很长很长很长很长很长很长很长很长的工作内容',
+            sj: '2019-01-01'
+          },
+          {
+            rw: '这是一条工作任务',
+            nr: '这是一条很长很长很长很长很长很长很长很长很长的工作内容',
+            sj: '2019-01-01'
+          }
+        ]
       }
     },
     computed: {
+      ...mapGetters(['userInfo']),
       option () {
         return {
           span: 8,
@@ -222,97 +248,97 @@
 </script>
 
 <style scoped="scoped" lang="scss">
-  .wel {
-    &__header {
-      padding: 25px 40px;
-      border-bottom: 1px solid #e8e8e8;
-      background-color: #fff;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+    .wel {
+        &__header {
+            padding: 25px 40px;
+            border-bottom: 1px solid #e8e8e8;
+            background-color: #fff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        &__info {
+            display: flex;
+            align-items: center;
+
+            &-img {
+                border-radius: 72px;
+                display: block;
+                width: 72px;
+                height: 72px;
+
+                img {
+                    width: 100%;
+                    height: 100%;
+                    display: block;
+                }
+            }
+
+            &-content {
+                position: relative;
+                margin-left: 24px;
+                color: rgba(0, 0, 0, 0.45);
+                line-height: 22px;
+            }
+
+            &-title {
+                font-size: 20px;
+                line-height: 28px;
+                font-weight: 500;
+                color: rgba(0, 0, 0, 0.85);
+                margin-bottom: 12px;
+            }
+
+            &-subtitle {
+                position: relative;
+                font-size: 14px;
+                color: rgba(0, 0, 0, 0.45);
+                line-height: 22px;
+            }
+        }
+
+        &__extra {
+            &-item {
+                position: relative;
+                padding: 0 32px;
+                display: inline-block;
+
+                &:last-child {
+                    &::after {
+                        display: none;
+                    }
+                }
+
+                &:after {
+                    background-color: #e8e8e8;
+                    position: absolute;
+                    top: 30px;
+                    right: 0;
+                    width: 1px;
+                    height: 40px;
+                    content: "";
+                }
+            }
+
+            &-title {
+                color: rgba(0, 0, 0, 0.45);
+                font-size: 14px;
+                line-height: 22px;
+                margin-bottom: 4px;
+            }
+
+            &-subtitle {
+                color: rgba(0, 0, 0, 0.85);
+                font-size: 30px;
+                line-height: 38px;
+                margin: 0;
+
+                span {
+                    color: rgba(0, 0, 0, 0.45);
+                    font-size: 20px;
+                }
+            }
+        }
     }
-
-    &__info {
-      display: flex;
-      align-items: center;
-
-      &-img {
-        border-radius: 72px;
-        display: block;
-        width: 72px;
-        height: 72px;
-
-        img {
-          width: 100%;
-          height: 100%;
-          display: block;
-        }
-      }
-
-      &-content {
-        position: relative;
-        margin-left: 24px;
-        color: rgba(0, 0, 0, 0.45);
-        line-height: 22px;
-      }
-
-      &-title {
-        font-size: 20px;
-        line-height: 28px;
-        font-weight: 500;
-        color: rgba(0, 0, 0, 0.85);
-        margin-bottom: 12px;
-      }
-
-      &-subtitle {
-        position: relative;
-        font-size: 14px;
-        color: rgba(0, 0, 0, 0.45);
-        line-height: 22px;
-      }
-    }
-
-    &__extra {
-      &-item {
-        position: relative;
-        padding: 0 32px;
-        display: inline-block;
-
-        &:last-child {
-          &::after {
-            display: none;
-          }
-        }
-
-        &:after {
-          background-color: #e8e8e8;
-          position: absolute;
-          top: 30px;
-          right: 0;
-          width: 1px;
-          height: 40px;
-          content: "";
-        }
-      }
-
-      &-title {
-        color: rgba(0, 0, 0, 0.45);
-        font-size: 14px;
-        line-height: 22px;
-        margin-bottom: 4px;
-      }
-
-      &-subtitle {
-        color: rgba(0, 0, 0, 0.85);
-        font-size: 30px;
-        line-height: 38px;
-        margin: 0;
-
-        span {
-          color: rgba(0, 0, 0, 0.45);
-          font-size: 20px;
-        }
-      }
-    }
-  }
 </style>

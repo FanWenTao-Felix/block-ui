@@ -41,7 +41,6 @@
   import {validatenull} from '@/util/validate'
   import topLang from '@/page/top/top-lang'
   import topColor from '@/page/top/top-color'
-
 export default {
     name: 'login',
     components: {

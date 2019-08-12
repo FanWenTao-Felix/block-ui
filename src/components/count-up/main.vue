@@ -4,6 +4,7 @@
 
 <script>
 import create from '@/util/core/create'
+import {CountUp} from 'countup.js'
 export default create({
   name: 'count-up',
   props: {

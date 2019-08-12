@@ -52,7 +52,6 @@
 <script>
   import {mapGetters} from 'vuex'
   import website from '@/config/website'
-
   export default {
     name: 'userlogin',
     data () {
