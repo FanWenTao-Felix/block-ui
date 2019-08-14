@@ -13,6 +13,8 @@ import AvueRouter from './avue-router'
 import Vue from 'vue'
 import Store from '../store/'
 import i18n from '@/lang'
+import filters from './filters'
+import _ from 'underscore'
 
 Vue.use(VueRouter)
 
@@ -35,4 +37,11 @@ let Router = new VueRouter({
 AvueRouter.install(Vue, Router, Store, i18n)
 Router.$avueRouter.formatRoutes(Store.state.user.menu, true)
 Router.addRoutes([...PageRouter, ...ViewsRouter])
+
+_.each(filters, (filter) => {
+  Router.beforeEach((to, from, next) => {
+    filter.call(Router.app, to, from, next)
+  })
+})
+
 export default Router

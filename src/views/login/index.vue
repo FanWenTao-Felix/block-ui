@@ -39,8 +39,8 @@
   import {mapGetters} from 'vuex'
   import {dateFormat} from '@/util/date'
   import {validatenull} from '@/util/validate'
-  import topLang from '@/page/top/top-lang'
-  import topColor from '@/page/top/top-color'
+  import topLang from '@/views/page/top/top-lang'
+  import topColor from '@/views/page/top/top-color'
 export default {
     name: 'login',
     components: {

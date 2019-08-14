@@ -31,8 +31,8 @@
 </template>
 <script>
   import {mapGetters} from 'vuex'
-  import sidebar from './sidebar/'
-  import top from './top/'
+  import sidebar from './sidebar/index'
+  import top from './top/index'
 
   export default {
     components: {

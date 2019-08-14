@@ -23,6 +23,7 @@
     "jquery": "^3.2.1",
     "js-cookie": "^2.2.1",
     "mockjs": "^1.0.1-beta3",
+    "underscore": "^1.9.1",
     "vertx3-eventbus-client": "^3.5.1",
     "vue": "^2.5.13",
     "vue-axios": "^2.0.2",
