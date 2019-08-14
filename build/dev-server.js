@@ -100,8 +100,8 @@ var staticPath = path.posix.join(config.dev.assetsPublicPath, config.dev.assetsS
 // 当开发环境中如果遇到了路径为staticPath的资源，那么到./static中引用该资源
 app.use(staticPath, express.static('./static'))
 
-/*var modulesPath = path.posix.join(config.dev.assetsPublicPath, 'modules')
-app.use(modulesPath, express.static('./modules'))*/
+/*var modulesPath = path.posix.join(config.dev.assetsPublicPath, 'global')
+app.use(modulesPath, express.static('./global'))*/
 
 var uri = 'http://localhost:' + port
 var _resolve

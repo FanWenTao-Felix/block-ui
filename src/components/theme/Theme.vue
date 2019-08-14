@@ -1,7 +1,6 @@
 <template>
     <div>
-        <component v-bind:is="themeComponent" :theme="theme" :navs="navs" :subnavs="subnavs"
-                   :page="page" :site="site"></component>
+        <component v-bind:is="themeComponent" :theme="theme" :navs="navs" :subnavs="subnavs" :page="page" :site="site" ></component>
     </div>
 </template>
 <script>
@@ -41,8 +40,26 @@
         return this.$store.getters.confMode
       },
       themeComponent () {
-        console.log('1123', this.$store.getters.sites)
-        return 123
+        let themes = this.$store.getters.pageComponents.themes
+        let page = this.page
+        let component = null
+        if (themes[this.theme]) {
+          component = themes[this.theme][page.mode]
+        }
+        if (!component) {
+          if (/\//.test(this.theme)) {
+            component = this.$require(this.theme, page.mode)
+          } else {
+            component = Themes[this.theme][page.mode]
+          }
+          this.$store.dispatch('add_page_component', {
+            name: this.theme,
+            type: 'theme',
+            mode: page.mode,
+            component
+          })
+        }
+        return component
       }
     }
   }

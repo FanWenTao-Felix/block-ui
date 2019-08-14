@@ -2,7 +2,7 @@
   <component v-bind:is="widgetComponent" :widget="widget" :params="widgetParams[widget.id]" :page="page" :i="i" :j="j"></component>
 </template>
 <script>
-  import Widgets from 'widgets'
+  import Widgets from '../widgets'
 
   export default {
     name: 'widget',
@@ -33,10 +33,8 @@
       }
     },
     created () {
-      this.$store.dispatch('update_widget_created', this.widget.id)
     },
     beforeDestroy () {
-      this.$store.dispatch('update_widget_destroyed', this.widget.id)
     }
   }
 </script>

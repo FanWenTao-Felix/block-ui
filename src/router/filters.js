@@ -1,15 +1,17 @@
 import singleLongin from './single-login.js'
-/* import siteInfo from './site-info.js'
+import siteInfo from './site-info.js'
 import auth from './auth.js'
 import defaultGroup from './default-group.js'
-import initSiteNavs from './init-navs.js' */
+import initSiteNavs from './init-navs.js'
 import defaultPage from './default-page.js'
+import pageInfo from './page-info.js'
 
 export default {
   singleLongin,
-/*  siteInfo,
+  siteInfo,
   auth,
   defaultGroup,
-  initSiteNavs, */
-  defaultPage
+  initSiteNavs,
+  defaultPage,
+  pageInfo
 }

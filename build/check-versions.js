@@ -51,7 +51,7 @@ module.exports = function () {
   // 打印错误信息
   if (warnings.length) {
     console.log('')
-    console.log(chalk.yellow('To use this template, you must update following to modules:'))
+    console.log(chalk.yellow('To use this template, you must update following to global:'))
     console.log()
     for (var i = 0; i < warnings.length; i++) {
       var warning = warnings[i]

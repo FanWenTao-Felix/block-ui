@@ -7,16 +7,6 @@ export default function (to, from, next) {
     } else if (type === 'public') {
       next(`/${to.params.site}/public`)
     } else if (type === 'dialog') {
-      let dialog = {
-        title: '',
-        width: '450px',
-        height: '400px',
-        'show-close': true,
-        body: () => import('views/login/DialogLogin.vue'),
-        data: {
-        }
-      }
-      this.$dialog(dialog)
     } else if (type === 'none') { // 禁用登录验证
       this.$router.push('/notFound')
     } else {

@@ -91,7 +91,7 @@ var webpackConfig = merge(baseWebpackConfig, {
       // 公共模块名字
       name: 'vendor',
       minChunks: function (module, count) {
-        // any required modules inside node_modules are extracted to vendor
+        // any required global inside node_modules are extracted to vendor
         return (
           module.resource &&
           /\.js$/.test(module.resource) &&

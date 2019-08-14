@@ -4,7 +4,7 @@
             <div class="header-in">
                 <h1 class="title">
                     <div v-if="site.logo" style="float: left;">
-                        <img class="avatar" :src="filter(site.logo)">
+                        <img class="avatar" :src="filter(site.logo)" alt=""/>
                     </div>
                     <div>
                         <p style="width: 400px;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;"
@@ -27,10 +27,16 @@
 </template>
 
 <script>
-  import css from '@/assets/scss/elementDefault.scss'
-  import {gbs} from '@/config'
+  import Sysbar from '@/components/sysbar/index'
+  import Navbar from '@/components/navbar/index'
+  import Layout from '@/components/layout/index'
 
   export default {
+    components: {
+      Sysbar,
+      Navbar,
+      Layout
+    },
     name: 'theme-default',
     props: ['page', 'theme', 'navs', 'subnavs'],
     data () {
@@ -50,8 +56,6 @@
       }
     },
     mounted () {
-      this.fileDownloadUrl = gbs.fileServiceUrl + '/file/download'
-      document.getElementById('_theme_').innerHTML = css.toString()
     }
   }
 </script>

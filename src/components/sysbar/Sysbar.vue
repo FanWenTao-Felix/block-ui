@@ -29,9 +29,7 @@
     </el-dialog>
   </span>
   <span class="user-info" v-else>
-    <span v-if="site.loginType === 'system' || site.loginType === 'dialog'">
-      <el-button type="text" @click="login">登录</el-button>
-    </span>
+      <el-button type="text" >登录</el-button>
   </span>
 </template>
 <script>

@@ -15,6 +15,20 @@ function getFirstItem (navs) {
     }
   }
 }
+
 export default function (to, from, next) {
-  next()
+  let subnavs = this.$store.getters.subnavs
+  if (to.path === this.$store.getters.topNav && subnavs) {
+    next(getFirstItem(subnavs))
+  } else if (to.params && to.params.type && !to.params.path) {
+    let navs = this.$store.getters.navs
+    if (navs) {
+      let path = getFirstItem(navs)
+      this.$store.dispatch('update_top_nav', path).then(() => next(path))
+    } else {
+      next()
+    }
+  } else {
+    next()
+  }
 }

@@ -1,17 +1,14 @@
-import {gbs} from 'config'
+import {gbs} from '../config'
+import {siteInfo} from '@/api/site'
+
 export default function (to, from, next) {
   if (document.domain && !this.$store.getters.site) {
     let site = (to.params && to.params.site) ? to.params.site : gbs.default_site
     // 远程获取站点信息
-    this.$api_site_siteInfo({
-      data: {
-        site: site,
-        domain: document.domain
-      },
-      fn: (data) => {
-        // 全局存储站点信息
+    return new Promise(resolve => {
+      siteInfo(site, document.domain).then((res) => {
+        const data = res.data.data
         this.$store.dispatch('update_site', data)
-        sessionStorage.setItem('customerCode', data.C_CUSTORMER_CODE || '')
         let type = this.$store.getters.userinfo ? 'private' : 'public'
         if (site !== data.name) {
           if (to.params && to.params.path) {
@@ -26,7 +23,7 @@ export default function (to, from, next) {
             next(`/${site}/${type}`)
           }
         }
-      }
+      })
     })
   } else {
     next()

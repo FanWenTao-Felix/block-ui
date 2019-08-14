@@ -1,4 +1,5 @@
 import _ from 'underscore'
+import {getPages} from '@/api/site'
 
 function createSubNavs (navs, subNavs) {
   _.each(navs, function (item) {
@@ -44,34 +45,26 @@ export default function (to, from, next) {
   if (to.params && to.params.type) {
     if (!this.$store.getters.navs) {
       // 初始化页面组菜单
-      this.$api_site_pages({
-        data: {
-          site: `/${to.params.site}/${to.params.type}`
-        }
-      }).then(navs => {
-        let subNavs = {}
-        createSubNavs(navs, subNavs)
-        this.$store.dispatch('update_navs', {
-          navs,
-          subNavs
-        }).then(() => {
-          // 初始化当前菜单
-          if (to.params.path) {
-            this.$store.dispatch('update_top_nav', getTopNav(to.path, navs)).then(next)
-          } else {
-            next()
-          }
+      return new Promise(resolve => {
+        getPages().then((navs) => {
+          let subNavs = {}
+          createSubNavs(navs, subNavs)
+          this.$store.dispatch('update_navs', {
+            navs,
+            subNavs
+          }).then(() => {
+            // 初始化当前菜单
+            if (to.params.path) {
+              this.$store.dispatch('update_top_nav', getTopNav(to.path, navs))
+                .then(next)
+            } else {
+              next()
+            }
+          })
         })
       })
     } else {
-      // 已经有菜单，只需初始化当前菜单
-      if (to.params.path) {
-        this.$store.dispatch('update_top_nav', getTopNav(to.path, this.$store.getters.navs)).then(next)
-      } else {
-        next()
-      }
+      next()
     }
-  } else {
-    next()
   }
 }
