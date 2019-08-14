@@ -29,7 +29,9 @@
     </el-dialog>
   </span>
   <span class="user-info" v-else>
-      <el-button type="text" >登录</el-button>
+    <span v-if="site.loginType === 'system' || site.loginType === 'dialog'">
+      <el-button type="text" @click="login">登录</el-button>
+    </span>
   </span>
 </template>
 <script>
@@ -60,7 +62,21 @@
         return this.$store.getters.userinfo
       }
     },
-    methods: {},
+    methods: {
+      login: function () {
+        if (this.site.loginType === 'system') {
+          this.$router.push('/login')
+        } else {
+          let dialog = {
+            title: '登录',
+            body: () => import('@/views/login/index.vue'),
+            data: {
+            }
+          }
+          this.$store.dispatch('update_dialog_content', dialog)
+        }
+      }
+    },
     mounted () {},
     created () {}
   }

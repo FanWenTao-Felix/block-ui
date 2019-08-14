@@ -46,7 +46,8 @@ export default function (to, from, next) {
     if (!this.$store.getters.navs) {
       // 初始化页面组菜单
       return new Promise(resolve => {
-        getPages().then((navs) => {
+        getPages().then((res) => {
+          let navs = res.data.data
           let subNavs = {}
           createSubNavs(navs, subNavs)
           this.$store.dispatch('update_navs', {
@@ -56,7 +57,7 @@ export default function (to, from, next) {
             // 初始化当前菜单
             if (to.params.path) {
               this.$store.dispatch('update_top_nav', getTopNav(to.path, navs))
-                .then(next)
+                .then(() => next())
             } else {
               next()
             }
@@ -64,7 +65,14 @@ export default function (to, from, next) {
         })
       })
     } else {
-      next()
+      // 已经有菜单，只需初始化当前菜单
+      if (to.params.path) {
+        this.$store.dispatch('update_top_nav', getTopNav(to.path, this.$store.getters.navs)).then(next)
+      } else {
+        next()
+      }
     }
+  } else {
+    next()
   }
 }

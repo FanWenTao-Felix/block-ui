@@ -1,6 +1,15 @@
 import * as types from './mutations_types.js'
 
 export default {
+  update_dialog_content: ({
+                            commit
+                          }, dialog) => {
+    return new Promise((resolve, reject) => {
+      commit(types.UPDATE_DIALOG_CONTENT, dialog)
+      resolve()
+    })
+  },
+
   add_page_component: ({
                          commit
                        }, data) => {

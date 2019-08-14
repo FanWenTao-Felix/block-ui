@@ -51,5 +51,14 @@ export default {
   [types.UPDATE_PAGE] (state, page) {
     state.path = page.path
     Vue.set(state.pageDatas, page.path, page)
+  },
+
+  [types.UPDATE_DIALOG_CONTENT] (state, dialog) {
+    if (dialog) {
+      dialog.visible = true
+      dialog.width = dialog.width || '640px'
+      dialog.top = dialog.top || '5%'
+    }
+    state.dialog = dialog || {}
   }
 }

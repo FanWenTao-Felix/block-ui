@@ -10,3 +10,5 @@ export const UPDATE_NAVS = 'UPDATE_NAVS'
 export const UPDATE_TOP_NAV = 'UPDATE_TOP_NAV'
 // 更新页面信息
 export const UPDATE_PAGE = 'UPDATE_PAGE'
+// 弹出窗口
+export const UPDATE_DIALOG_CONTENT = 'UPDATE_DIALOG_CONTENT'
