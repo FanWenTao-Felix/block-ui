@@ -4,11 +4,11 @@
     <slot></slot>
     <i class="iconfont icon-shezhi" @click="settings" :title="title"></i>
   </span>
-  <span v-else>
+    <span v-else>
     <slot></slot>
-    <i class="iconfont icon-zuidahua" v-if="!page.maximized & !minimized"  @click="max" title="最大化"></i>
-    <i class="iconfont icon-huanyuan" v-if="page.maximized || minimized"  @click="restore" title="还原"></i>
-    <i class="iconfont icon-zuixiaohua" v-if="!page.maximized & !minimized"  @click="min" title="最小化"></i>
+    <i class="iconfont icon-zuidahua" v-if="!page.maximized & !minimized" @click="max" title="最大化"></i>
+    <i class="iconfont icon-huanyuan" v-if="page.maximized || minimized" @click="restore" title="还原"></i>
+    <i class="iconfont icon-zuixiaohua" v-if="!page.maximized & !minimized" @click="min" title="最小化"></i>
   </span>
 </template>
 
@@ -36,6 +36,11 @@
         return this.$store.getters.page
       }
     },
-    methods: {}
+    methods: {
+      max: function () {
+      },
+      min: function () {
+      }
+    }
   }
 </script>

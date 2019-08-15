@@ -15,6 +15,8 @@
     data () {
       return {
       }
+    },
+    created () {
     }
   }
 </script>
