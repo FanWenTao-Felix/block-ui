@@ -52,6 +52,7 @@
 <script>
   import {mapGetters} from 'vuex'
   import website from '@/config/website'
+
   export default {
     name: 'userlogin',
     data () {
@@ -65,14 +66,14 @@
         },
         loginRules: {
           tenantCode: [
-            { required: false, message: '请输入租户编号', trigger: 'blur' }
+            {required: false, message: '请输入租户编号', trigger: 'blur'}
           ],
           username: [
-            { required: true, message: '请输入用户名', trigger: 'blur' }
+            {required: true, message: '请输入用户名', trigger: 'blur'}
           ],
           password: [
-            { required: true, message: '请输入密码', trigger: 'blur' },
-            { min: 1, message: '密码长度最少为6位', trigger: 'blur' }
+            {required: true, message: '请输入密码', trigger: 'blur'},
+            {min: 1, message: '密码长度最少为6位', trigger: 'blur'}
           ]
         },
         passwordType: 'password'
@@ -100,11 +101,22 @@
               text: '登录中,请稍后。。。',
               spinner: 'el-icon-loading'
             })
-            this.$store.dispatch('LoginByUsername', this.loginForm).then(() => {
-              this.$router.push({path: this.tagWel.value})
-              loading.close()
-            }).catch(() => {
-              loading.close()
+
+            this.$api_user_login({}).then((data) => {
+              let site = this.$store.getters.site
+              this.$store.dispatch('update_userinfo', {
+                userinfo: data.userinfo
+              }).then(() => {
+                if (site) {
+                  this.$router.push({path: this.tagWel.value})
+                  // this.$router.push(`/wel`)
+                } else {
+                  this.$router.push('/')
+                }
+                loading.close()
+              }).catch(() => {
+                loading.close()
+              })
             })
           }
         })

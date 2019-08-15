@@ -6,7 +6,10 @@ export default function (to, from, next) {
     let site = (to.params && to.params.site) ? to.params.site : gbs.default_site
     // 远程获取站点信息
     return new Promise(resolve => {
-      siteInfo(site, document.domain).then((res) => {
+      this.$api_site_siteInfo(
+        site,
+        document.domain
+      ).then((res) => {
         const data = res.data.data
         this.$store.dispatch('update_site', data)
         let type = this.$store.getters.userinfo ? 'private' : 'public'

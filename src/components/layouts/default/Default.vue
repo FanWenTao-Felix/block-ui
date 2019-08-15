@@ -3,9 +3,7 @@
 </template>
 
 <script>
-  import Port from '@/components/port/index'
   export default {
-    components: {Port},
     name: 'layout-defaut',
     props: ['page', 'layout'],
     data () {

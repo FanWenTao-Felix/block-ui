@@ -9,10 +9,7 @@
   <div v-else class="port-show"></div>
 </template>
 <script>
-  import Widget from '@/components/widget/index'
-
   export default {
-    components: {Widget},
     name: 'port',
     props: ['page', 'index'],
     data () {

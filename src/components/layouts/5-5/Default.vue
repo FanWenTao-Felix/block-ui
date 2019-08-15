@@ -10,9 +10,7 @@
 </template>
 
 <script>
-  import Port from '@/components/port/index'
   export default {
-    components: {Port},
     name: 'layout-5-5',
     props: ['page', 'layout'],
     data () {

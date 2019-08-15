@@ -27,16 +27,7 @@
 </template>
 
 <script>
-  import Sysbar from '@/components/sysbar/index'
-  import Navbar from '@/components/navbar/index'
-  import Layout from '@/components/layout/index'
-
   export default {
-    components: {
-      Sysbar,
-      Navbar,
-      Layout
-    },
     name: 'theme-default',
     props: ['page', 'theme', 'navs', 'subnavs'],
     data () {

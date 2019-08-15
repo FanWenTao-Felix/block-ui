@@ -32,14 +32,7 @@
 </template>
 
 <script>
-  import DecoratorHeader from '@/components/decorator-header/index'
-  import DecoratorToolbar from '@/components/decorator-toolbar/index'
-
   export default {
-    components: {
-      DecoratorHeader,
-      DecoratorToolbar
-    },
     name: 'decorator-default',
     props: ['page', 'widget', 'params', 'i', 'j', 'editMode'],
     data () {

@@ -19,9 +19,7 @@
   </el-menu>
 </template>
 <script>
-  import badge from '@/components/badge/index'
   export default {
-    components: {badge},
     name: 'navbar',
     props: ['page', 'navs'],
     data () {

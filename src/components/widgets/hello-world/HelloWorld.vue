@@ -7,9 +7,7 @@
 </template>
 
 <script>
-  import Decorator from '@/components/decorator/index'
   export default {
-    components: {Decorator},
     name: 'hello-world-widget',
     props: ['page', 'params', 'widget', 'i', 'j'],
     data () {

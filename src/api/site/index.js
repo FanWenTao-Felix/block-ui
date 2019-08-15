@@ -1,21 +1,18 @@
-import request from 'axios'
-
-export const siteInfo = (site, domain) => request({
-  url: '/api/site/siteInfo',
-  method: 'post',
-  params: {
-    site,
-    domain
+export default [
+  {
+    name: '获取站点信息',
+    method: 'siteInfo',
+    path: '/cos3-portal-manager/site/siteInfo',
+    type: 'get'
+  }, {
+    name: '获取站点页面列表',
+    method: 'pages',
+    path: '/cos3-portal-manager/site/pages',
+    type: 'get'
+  }, {
+    name: '获取页面信息',
+    method: 'pageInfo',
+    path: '/cos3-portal-manager/site/pageInfo',
+    type: 'get'
   }
-})
-
-export const getPages = () => request({
-  url: '/api/site/pages',
-  method: 'get'
-})
-
-export const pageInfo = () => request({
-  url: '/api/site/pageInfo',
-  method: 'get'
-})
-
+]
