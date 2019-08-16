@@ -12,3 +12,5 @@ export const UPDATE_TOP_NAV = 'UPDATE_TOP_NAV'
 export const UPDATE_PAGE = 'UPDATE_PAGE'
 // 弹出窗口
 export const UPDATE_DIALOG_CONTENT = 'UPDATE_DIALOG_CONTENT'
+// 关闭所有窗口
+export const CLEAR_DIALOG_CONTENT = 'CLEAR_DIALOG_CONTENT'

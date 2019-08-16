@@ -1,7 +1,7 @@
 // import Vue from 'vue'
 var gbs = {
   api_host: '/api', // 接口根地址。本地代理到slsadmin.api.sls.com,线上使用的是Nginx代理
-  modules_host: '/global', // 异步组件根地址。
+  modules_host: '/modules', // 异步组件根地址。
   default_site: 'web', // 默认访问站点
   db_prefix: 'sls_admin_', // 本地存储的key
   event_bus_api: '/eventbus/', // vertx event bus 地址

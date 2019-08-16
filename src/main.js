@@ -1,27 +1,23 @@
-// The Vue build version to load with the `import` command
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import 'babel-polyfill'
 
-import './plugins/'
-import './register/index'
+import 'plugins/'
+import 'register/index'
 
 import Vue from 'vue'
 import App from './App'
 import store from './store'
 import router from './router'
 import ElementUI from 'element-ui'
-import {
-  iconfontUrl,
-  iconfontVersion
-} from '@/config/env'
-import { loadStyle } from './util/util'
+import i18n from './lang'
+
+import {iconfontUrl, iconfontVersion} from 'config/env'
+import {loadStyle} from 'util/util'
 // eslint-disable-next-line no-duplicate-imports
 import * as urls from '@/config/env'
 import './assets/scss/common.scss'
 import 'element-ui/lib/theme-chalk/index.css'
-import './assets/iconfont/iconfont.css'
-import i18n from './lang'
-
+// import './assets/iconfont/iconfont.css'
 import basicContainer from './components/basic-container/main'
 
 Vue.use(ElementUI)

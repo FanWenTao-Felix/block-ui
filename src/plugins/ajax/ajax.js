@@ -1,12 +1,6 @@
 /**
  * 封装axios的通用请求
  */
-function combineURLs (baseURL, relativeURL) {
-  return relativeURL
-    ? baseURL.replace(/\/+$/, '') + '/' + relativeURL.replace(/^\/+/, '')
-    : baseURL
-}
-
 export default function (Vue, {axios, gbs}) {
   // Add a request interceptor
   axios.interceptors.request.use(function (config) {
@@ -29,7 +23,7 @@ export default function (Vue, {axios, gbs}) {
     }
     config.app.$store.dispatch('show_loading')
     return config
-  }, function (error) {
+  }, (error) => {
     // Do something with request error
     console.log('请求前错误', error)
     return Promise.reject(error)
@@ -75,7 +69,7 @@ export default function (Vue, {axios, gbs}) {
         }
       }
     })
-  }, function (error) {
+  }, (error) => {
     // 服务器返回异常
     let config = error.config
     let errFn = config.errFn || (() => {})
@@ -110,4 +104,10 @@ export default function (Vue, {axios, gbs}) {
       }
     }
   })
+}
+
+function combineURLs (baseURL, relativeURL) {
+  return relativeURL
+    ? baseURL.replace(/\/+$/, '') + '/' + relativeURL.replace(/^\/+/, '')
+    : baseURL
 }

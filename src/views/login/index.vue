@@ -37,11 +37,12 @@
   import codeLogin from './codelogin'
   import thirdLogin from './thirdlogin'
   import {mapGetters} from 'vuex'
-  import {dateFormat} from '@/util/date'
-  import {validatenull} from '@/util/validate'
-  import topLang from '@/views/page/top/top-lang'
-  import topColor from '@/views/page/top/top-color'
-export default {
+  import {dateFormat} from 'util/date'
+  import {validatenull} from 'util/validate'
+  import topLang from 'views/page/top/top-lang'
+  import topColor from 'views/page/top/top-color'
+
+  export default {
     name: 'login',
     components: {
       userLogin,
@@ -54,6 +55,20 @@ export default {
       return {
         time: '',
         activeName: 'user'
+      }
+    },
+    created () {
+      this.getTime()
+      setInterval(() => {
+        this.getTime()
+      }, 1000)
+    },
+    computed: {
+      ...mapGetters(['website'])
+    },
+    methods: {
+      getTime () {
+        this.time = dateFormat(new Date())
       }
     },
     watch: {
@@ -74,25 +89,9 @@ export default {
           }, 2000)
         }
       }
-    },
-    created () {
-      this.getTime()
-      setInterval(() => {
-        this.getTime()
-      }, 1000)
-    },
-    mounted () {
-    },
-    computed: {
-      ...mapGetters(['website'])
-    },
-    props: [],
-    methods: {
-      getTime () {
-        this.time = dateFormat(new Date())
-      }
     }
   }
+
 </script>
 
 <style lang="scss">

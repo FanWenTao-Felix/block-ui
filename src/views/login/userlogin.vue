@@ -12,7 +12,7 @@
                       auto-complete="off"
                       :placeholder="$t('login.tenantCode')">
                 <i slot="prefix"
-                   class="icon-quanxian"></i>
+                   class="iconfont icon-quanxian"></i>
             </el-input>
         </el-form-item>
         <el-form-item prop="username">
@@ -22,7 +22,7 @@
                       auto-complete="off"
                       :placeholder="$t('login.username')">
                 <i slot="prefix"
-                   class="icon-yonghu"></i>
+                   class="iconfont icon-yonghu"></i>
             </el-input>
         </el-form-item>
         <el-form-item prop="password">
@@ -36,7 +36,7 @@
                    slot="suffix"
                    @click="showPassword"></i>
                 <i slot="prefix"
-                   class="icon-mima"></i>
+                   class="iconfont icon-mima"></i>
             </el-input>
         </el-form-item>
         <el-form-item>

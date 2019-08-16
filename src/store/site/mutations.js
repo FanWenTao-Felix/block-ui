@@ -60,5 +60,9 @@ export default {
       dialog.top = dialog.top || '5%'
     }
     state.dialog = dialog || {}
+  },
+
+  [types.CLEAR_DIALOG_CONTENT] (state) {
+    state.dialogs = []
   }
 }

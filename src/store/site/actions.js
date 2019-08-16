@@ -10,6 +10,15 @@ export default {
     })
   },
 
+  clear_dialog_content: ({
+                           commit
+                         }) => {
+    return new Promise((resolve, reject) => {
+      commit(types.CLEAR_DIALOG_CONTENT)
+      resolve()
+    })
+  },
+
   add_page_component: ({
                          commit
                        }, data) => {

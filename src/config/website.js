@@ -17,7 +17,7 @@ export default {
   isFirstPage: false,
   fistPage: {
     label: '首页',
-    value: '/wel/index',
+    value: '/web/private/index',
     params: {},
     query: {},
     meta: {

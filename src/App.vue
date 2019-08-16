@@ -9,11 +9,7 @@
     name: 'app',
     data () {
       return {}
-    },
-    watch: {},
-    created () {},
-    methods: {},
-    computed: {}
+    }
   }
 </script>
 <style lang="scss">

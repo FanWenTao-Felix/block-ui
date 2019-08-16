@@ -1,13 +1,12 @@
 import Vue from 'vue'
 import axios from 'axios'
 import Ajax from './ajax.js'
+import {gbs} from '@/config/'
 
-// 导入封装的回调函数
-import {
-  gbs
-} from '@/config/'
-
-// 动态设置本地和线上接口域名
+// 响应时间
+axios.defaults.timeout = 5000
+// 配置请求头
+axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=UTF-8'
+// 配置接口地址
 axios.defaults.baseURL = gbs.api_host
-
-Vue.use(Ajax, { axios, gbs })
+Vue.use(Ajax, {axios, gbs})
