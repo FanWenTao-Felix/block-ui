@@ -14,5 +14,5 @@ for (var i = 0; i < request.length; i++) {
   }
 }
 
-// console.log(plugins);
+// console.log(plugins)
 export default plugins

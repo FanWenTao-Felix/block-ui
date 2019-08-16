@@ -45,22 +45,23 @@ export default function (to, from, next) {
   if (to.params && to.params.type) {
     if (!this.$store.getters.navs) {
       // 初始化页面组菜单
-      this.$api_site_getPages.then((res) => {
-        let navs = res.data.data
-        let subNavs = {}
-        createSubNavs(navs, subNavs)
-        this.$store.dispatch('update_navs', {
-          navs,
-          subNavs
-        }).then(() => {
-          // 初始化当前菜单
-          if (to.params.path) {
-            this.$store.dispatch('update_top_nav', getTopNav(to.path, navs))
-              .then(() => next())
-          } else {
-            next()
-          }
-        })
+      this.$api_site_siteInfo({
+        fn: (navs) => {
+          let subNavs = {}
+          createSubNavs(navs, subNavs)
+          this.$store.dispatch('update_navs', {
+            navs,
+            subNavs
+          }).then(() => {
+            // 初始化当前菜单
+            if (to.params.path) {
+              this.$store.dispatch('update_top_nav', getTopNav(to.path, navs))
+                .then(() => next())
+            } else {
+              next()
+            }
+          })
+        }
       })
     } else {
       // 已经有菜单，只需初始化当前菜单

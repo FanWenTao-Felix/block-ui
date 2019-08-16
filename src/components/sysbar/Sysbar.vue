@@ -86,7 +86,8 @@
         }
       },
       logout: function () {
-        this.$api_user_logout({}).then((data) => {
+        this.$api_user_logout({
+        }).then(() => {
           this.$store.dispatch('update_navs', {
             navs: null,
             subNavs: null
