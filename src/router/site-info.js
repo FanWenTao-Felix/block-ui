@@ -1,4 +1,4 @@
-import {gbs} from '../config'
+import {gbs} from 'config'
 
 export default function (to, from, next) {
   if (document.domain && !this.$store.getters.site) {

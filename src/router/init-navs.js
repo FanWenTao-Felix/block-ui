@@ -1,5 +1,43 @@
 import _ from 'underscore'
-import {getPages} from '@/api/site'
+
+export default function (to, from, next) {
+  // 设置页面组名称
+  if (to.params && to.params.type) {
+    if (!this.$store.getters.navs) {
+      // 初始化页面组菜单
+      this.$api_site_pages({
+        data: {
+          site: `/${to.params.site}/${to.params.type}`
+        }
+      }).then(navs => {
+        let subNavs = {}
+        createSubNavs(navs, subNavs)
+        this.$store.dispatch('update_navs', {
+          navs,
+          subNavs
+        }).then(() => {
+          // 初始化当前菜单
+          if (to.params.path) {
+            this.$store.dispatch('update_top_nav', getTopNav(to.path, navs))
+              .then(() => next())
+          } else {
+            next()
+          }
+        })
+      })
+    } else {
+      // 已经有菜单，只需初始化当前菜单
+      if (to.params.path) {
+        this.$store.dispatch('update_top_nav', getTopNav(to.path, this.$store.getters.navs))
+          .then(() => next())
+      } else {
+        next()
+      }
+    }
+  } else {
+    next()
+  }
+}
 
 function createSubNavs (navs, subNavs) {
   _.each(navs, function (item) {
@@ -37,41 +75,5 @@ function getTopNav (path, navs) {
         return nav
       }
     }
-  }
-}
-
-export default function (to, from, next) {
-  // 设置页面组名称
-  if (to.params && to.params.type) {
-    if (!this.$store.getters.navs) {
-      // 初始化页面组菜单
-      this.$api_site_siteInfo({
-        fn: (navs) => {
-          let subNavs = {}
-          createSubNavs(navs, subNavs)
-          this.$store.dispatch('update_navs', {
-            navs,
-            subNavs
-          }).then(() => {
-            // 初始化当前菜单
-            if (to.params.path) {
-              this.$store.dispatch('update_top_nav', getTopNav(to.path, navs))
-                .then(() => next())
-            } else {
-              next()
-            }
-          })
-        }
-      })
-    } else {
-      // 已经有菜单，只需初始化当前菜单
-      if (to.params.path) {
-        this.$store.dispatch('update_top_nav', getTopNav(to.path, this.$store.getters.navs)).then(next)
-      } else {
-        next()
-      }
-    }
-  } else {
-    next()
   }
 }

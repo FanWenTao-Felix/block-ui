@@ -8,7 +8,7 @@ import './register/index'
 import Vue from 'vue'
 import App from './App'
 import store from './store'
-import router from './router/router'
+import router from './router'
 import ElementUI from 'element-ui'
 import {
   iconfontUrl,

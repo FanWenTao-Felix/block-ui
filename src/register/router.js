@@ -1,3 +1,6 @@
+import filters from '@/router/filters'
+import _ from 'underscore'
+
 let RouterPlugin = function () {
   this.$router = null
   this.$store = null
@@ -20,7 +23,7 @@ RouterPlugin.install = function (vue, router, store, i18n) {
     return result.join('&')
   }
 
-  this.$router.$avueRouter = {
+  this.$router.$vueRouter = {
     // 全局配置
     $website: this.$store.getters.website,
     routerList: [],
@@ -77,6 +80,14 @@ RouterPlugin.install = function (vue, router, store, i18n) {
         value = route.path
       }
       return value
+    },
+    // 设置拦截器
+    filterRoutes: function (router) {
+      _.each(filters, (filter) => {
+        router.beforeEach((to, from, next) => {
+          filter.call(router.app, to, from, next)
+        })
+      })
     },
     // 动态路由
     formatRoutes: function (aMenu = [], first) {

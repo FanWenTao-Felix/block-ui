@@ -29,9 +29,20 @@ module.exports = {
     // fallback: [path.join(__dirname, '../node_modules')],
     alias: {
       'vue$': 'vue/dist/vue.esm.js',
-      '@': path.resolve(__dirname, '../src'),
-      'assets': path.resolve(__dirname, '../src/assets'),
-      'components': path.resolve(__dirname, '../src/components')
+      '@': resolve('src'),
+      'api': resolve('src/api'),
+      'assets': resolve('src/assets'),
+      'components': resolve('src/components'),
+      'config': resolve('src/config'),
+      'plugins': resolve('src/plugins'),
+      'register': resolve('src/register'),
+      'store': resolve('src/store'),
+      'util': resolve('src/util'),
+      'views': resolve('src/views'),
+      'themes': resolve('src/components/themes'),
+      'layouts': resolve('src/components/layouts'),
+      'decorators': resolve('src/components/decorators'),
+      'widgets': resolve('src/components/widgets'),
     }
   },
   resolveLoader: {

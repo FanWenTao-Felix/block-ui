@@ -2,7 +2,7 @@
  * 全站权限配置
  *
  */
-import router from './router/router'
+import router from './router'
 import store from './store'
 import { validatenull } from '@/util/validate'
 import { getToken } from '@/util/auth'
