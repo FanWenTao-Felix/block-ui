@@ -14,3 +14,13 @@ export const UPDATE_PAGE = 'UPDATE_PAGE'
 export const UPDATE_DIALOG_CONTENT = 'UPDATE_DIALOG_CONTENT'
 // 关闭所有窗口
 export const CLEAR_DIALOG_CONTENT = 'CLEAR_DIALOG_CONTENT'
+// 还原最大化的Widget
+export const UPDATE_WIDGET_ORIGINAL = 'UPDATE_WIDGET_ORIGINAL'
+// 页面进入编辑模式
+export const UPDATE_PAGE_EDIT_MODE = 'UPDATE_PAGE_EDIT_MODE'
+// 设置进入DIY模式
+export const UPDATE_PAGE_DIY_MODE = 'UPDATE_PAGE_DIY_MODE'
+// 页面进入配置模式
+export const UPDATE_PAGE_CONF_MODE = 'UPDATE_PAGE_CONF_MODE'
+// 更新页面主题
+export const UPDATE_THEME = 'UPDATE_THEME'

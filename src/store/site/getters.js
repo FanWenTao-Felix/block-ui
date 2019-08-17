@@ -4,5 +4,6 @@ export default {
   page: state => state.maximized ? state.maximized : state.pageDatas[state.path],
   navs: state => state.navs[state.site] ? state.navs[state.site][state.group] : null,
   subnavs: state => state.subnavs[state.topNav],
-  pageComponents: state => state.pageComponents
+  pageComponents: state => state.pageComponents,
+  dialogs: state => state.dialogs
 }

@@ -14,5 +14,15 @@ export default [
     method: 'pageInfo',
     path: '/site/pageInfo',
     type: 'get'
+  }, {
+    name: '获取主题列表',
+    method: 'themeList',
+    path: '/site/themeList',
+    type: 'get'
+  }, {
+    name: '保存用户自定义主题',
+    method: 'saveCustomTheme',
+    path: '/customTheme/saveCustomTheme',
+    type: 'get'
   }
 ]

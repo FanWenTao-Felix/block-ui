@@ -7,8 +7,6 @@
 </template>
 
 <script>
-  import css from '@/assets/scss/elementDefault.scss'
-
   export default {
     name: 'theme-default',
     props: ['page', 'theme', 'navs', 'subnavs'],

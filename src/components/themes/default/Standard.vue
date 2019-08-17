@@ -30,7 +30,6 @@
 </template>
 
 <script>
-  import css from '@/assets/scss/elementDefault.scss'
   import {gbs} from '@/config'
 
   export default {

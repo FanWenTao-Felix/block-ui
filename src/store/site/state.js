@@ -22,6 +22,8 @@ export default {
     decorators: {},
     widgets: {}
   },
+  // 弹出窗口
+  dialogs: [],
   // 最大化的Widget对象
   maximized: null
 }

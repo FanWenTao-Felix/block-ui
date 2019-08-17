@@ -1,6 +1,7 @@
 <template>
     <div>
-        <component v-bind:is="themeComponent" :theme="theme" :navs="navs" :subnavs="subnavs" :page="page" :site="site" ></component>
+      <diybar v-if="editMode || diyMode" :page="page" :editMode="editMode" :diyMode="diyMode" :confMode="confMode"></diybar>
+      <component v-if="page && theme"  v-bind:is="themeComponent" :theme="theme" :navs="navs" :subnavs="subnavs" :page="page" :site="site" :editMode="editMode"></component>
     </div>
 </template>
 <script>
@@ -9,7 +10,8 @@
   export default {
     name: 'theme',
     data () {
-      return {}
+      return {
+      }
     },
     computed: {
       site () {

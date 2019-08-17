@@ -75,5 +75,50 @@ export default {
       commit(types.UPDATE_PAGE, page)
       resolve()
     })
+  },
+
+  update_page_edit_mode: ({
+                            commit
+                          }, flag) => {
+    return new Promise((resolve, reject) => {
+      commit(types.UPDATE_PAGE_EDIT_MODE, flag)
+      resolve()
+    })
+  },
+
+  update_page_diy_mode: ({
+                           commit
+                         }, flag) => {
+    return new Promise((resolve, reject) => {
+      commit(types.UPDATE_PAGE_DIY_MODE, flag)
+      resolve()
+    })
+  },
+
+  update_page_conf_mode: ({
+                            commit
+                          }, flag) => {
+    return new Promise((resolve, reject) => {
+      commit(types.UPDATE_PAGE_CONF_MODE, flag)
+      resolve()
+    })
+  },
+
+  update_widget_original: ({
+                             commit
+                           }) => {
+    return new Promise((resolve, reject) => {
+      commit(types.UPDATE_WIDGET_ORIGINAL)
+      resolve()
+    })
+  },
+
+  update_theme: ({
+                   commit
+                 }, theme) => {
+    return new Promise((resolve, reject) => {
+      commit(types.UPDATE_THEME, theme)
+      resolve()
+    })
   }
 }

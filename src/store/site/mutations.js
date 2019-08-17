@@ -53,16 +53,40 @@ export default {
     Vue.set(state.pageDatas, page.path, page)
   },
 
+  [types.UPDATE_PAGE_EDIT_MODE] (state, flag) {
+    state.pageEditMode = flag
+  },
+
+  [types.UPDATE_PAGE_DIY_MODE] (state, flag) {
+    state.pageDiyMode = flag
+  },
+
+  [types.UPDATE_PAGE_CONF_MODE] (state, flag) {
+    state.pageConfMode = flag
+  },
+
   [types.UPDATE_DIALOG_CONTENT] (state, dialog) {
     if (dialog) {
       dialog.visible = true
       dialog.width = dialog.width || '640px'
       dialog.top = dialog.top || '5%'
+      state.dialogs.push(dialog)
+    } else {
+      state.dialogs.pop()
     }
-    state.dialog = dialog || {}
   },
 
   [types.CLEAR_DIALOG_CONTENT] (state) {
     state.dialogs = []
+  },
+
+  [types.UPDATE_WIDGET_ORIGINAL] (state) {
+    if (state.maximized) {
+      state.maximized = null
+    }
+  },
+
+  [types.UPDATE_THEME] (state, theme) {
+    Vue.set(state.sites[state.site], state.group + 'Theme', theme)
   }
 }
