@@ -2,12 +2,15 @@
 	<div>
 		<p class="introText" v-html="helpDetail.C_CONTENT"></p>
     <div class="intro">
+      文档说明
+<!--
       <img class="introImg" :src="`${fileDownloadUrl}/${helpDetail.C_PHOTO}`  " alt="" />
+-->
     </div>
-		<div v-if="fileList.length>0">
+<!--		<div v-if="fileList.length>0">
 		  <p>附件：<br/></p>
 			<li class="file_li" v-for="(item,index) in fileList" :key = "index"><a  class="el-upload-list__item-name"   @click="uploadFile(item.referenceId)"><i class="el-icon-document"></i>{{item.name}}</a></li>
-		</div>
+		</div> -->
 	</div>
 </template>
 
@@ -29,7 +32,7 @@
 
 		},
 		created() {
-      this.fileDownloadUrl = gbs.fileServiceUrl + '/file/download'
+/*      this.fileDownloadUrl = gbs.fileServiceUrl + '/file/download'
       this.helpDetail=this.data.helpData
 			if (this.helpDetail && this.helpDetail.C_FILES.length>0) {
 				let params = {
@@ -45,7 +48,7 @@
 					console.info(err)
 				}).finally(() => {
 				})
-				}
+				} */
 		},
 		mounted() {
 		}

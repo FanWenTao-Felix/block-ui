@@ -100,6 +100,7 @@
           data: {
             userInfo: this.userInfo
           },
+          body: () => import('views/settings/ChangePwd'),
           buttons: [{
             text: '取消',
             handle: function(options, dlg) {
