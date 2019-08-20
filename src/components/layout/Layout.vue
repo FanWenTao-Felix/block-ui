@@ -1,5 +1,5 @@
 <template>
-  <component v-bind:is="layoutComponent" :layout="page.layout" :page="page"></component>
+  <component v-if="page && page.layout" v-bind:is="layoutComponent" :layout="page.layout" :page="page"></component>
 </template>
 <script>
   import Layouts from '../layouts'

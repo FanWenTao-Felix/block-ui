@@ -1,5 +1,9 @@
 <template>
-  <div class="dropzone" :class="{'drag-hover': hover}" @dragleave="dragleave($event)" @dragover="dragover($event)" @drop='drop($event)'></div>
+  <div class="dropzone"
+       :class="{'drag-hover': hover}"
+       @dragleave="dragleave($event)"
+       @dragover="dragover($event)"
+       @drop='drop($event)'></div>
 </template>
 <script>
   export default {
@@ -11,14 +15,31 @@
       }
     },
     computed: {
-      editMode () {
-        return this.$store.getters.editMode
+      editMode() {
+        return this.$store.getters.editMode;
       },
-      rootPage () {
-        return this.$store.getters.page
+      diyMode() {
+        return this.$store.getters.diyMode;
+      },
+      rootPage() {
+        return this.$store.getters.page;
+      },
+      userInfo() {
+        return this.$store.getters.userinfo;
       }
     },
     methods: {
+      handleStoreWidget(i, j, widget, params) {
+        this.$store.dispatch("update_drag_widget", null);
+        this.$store.dispatch("update_widget", {
+          rootPage: this.rootPage,
+          page: this.page,
+          i: i,
+          j: j,
+          widget: widget,
+          params: params
+        });
+      },
       drop: function (event) {
         let data = this.$store.getters.dragWidget
         this.$store.dispatch('update_drag_widget', null)

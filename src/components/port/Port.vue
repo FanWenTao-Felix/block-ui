@@ -3,7 +3,8 @@
     <dropzone v-if="dragWidget" :page="page" :i="index" j="0"></dropzone>
     <template v-for="(widget, j) in (page.widgets ? page.widgets[index] : [])">
       <widget :key="widget.id" :i="index" :j="j" :widget="widget" :page="page"></widget>
-      <dropzone v-if="dragWidget" :page="page" :key="'dropzone-' + index + '-' + (j + 1)" :i="index" :j="j + 1"></dropzone>
+      <dropzone v-if="dragWidget" :page="page" :key="'dropzone-' + index + '-' + (j + 1)"
+                :i="index" :j="j + 1"></dropzone>
     </template>
   </div>
   <div v-else class="port-show"></div>

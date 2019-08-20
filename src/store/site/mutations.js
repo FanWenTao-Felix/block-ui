@@ -86,6 +86,22 @@ export default {
     }
   },
 
+  [types.UPDATE_WIDGET_CREATED] (state, widgetId) {
+    if (state.createdWidgets[widgetId] > 0) {
+      state.createdWidgets[widgetId] += 1
+    } else {
+      Vue.set(state.createdWidgets, widgetId, 1)
+    }
+  },
+
+  [types.UPDATE_WIDGET_DESTROYED] (state, widgetId) {
+    if (state.createdWidgets[widgetId] > 1) {
+      state.createdWidgets[widgetId] -= 1
+    } else {
+      Vue.delete(state.createdWidgets, widgetId)
+    }
+  },
+
   [types.UPDATE_THEME] (state, theme) {
     Vue.set(state.sites[state.site], state.group + 'Theme', theme)
   }

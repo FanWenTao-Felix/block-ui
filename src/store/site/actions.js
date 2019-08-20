@@ -113,6 +113,24 @@ export default {
     })
   },
 
+  update_widget_created: ({
+                            commit
+                          }, widgetId) => {
+    return new Promise((resolve, reject) => {
+      commit(types.UPDATE_WIDGET_CREATED, widgetId)
+      resolve()
+    })
+  },
+
+  update_widget_destroyed: ({
+                              commit
+                            }, widgetId) => {
+    return new Promise((resolve, reject) => {
+      commit(types.UPDATE_WIDGET_DESTROYED, widgetId)
+      resolve()
+    })
+  },
+
   update_theme: ({
                    commit
                  }, theme) => {

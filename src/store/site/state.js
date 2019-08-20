@@ -25,5 +25,9 @@ export default {
   // 弹出窗口
   dialogs: [],
   // 最大化的Widget对象
-  maximized: null
+  maximized: null,
+  // 当前页面显示的Widget集合
+  createdWidgets: {},
+  // 当前页面删除的widget集合
+  delWidgets: {}
 }

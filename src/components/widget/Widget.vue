@@ -1,16 +1,16 @@
 <template>
-    <component
-            ref="comp"
-            v-bind:is="widgetComponent"
-            :isWidget="true"
-            :widget="widgetObj"
-            :params="widgetParams"
-            :page="page || rootPage"
-            :i="i"
-            :j="j"
-            :dialog="dialog"
-            @getData="getData">
-    </component>
+  <component
+    ref="comp"
+    v-bind:is="widgetComponent"
+    :isWidget="true"
+    :widget="widgetObj"
+    :params="widgetParams"
+    :page="page || rootPage"
+    :i="i"
+    :j="j"
+    :dialog="dialog"
+    @getData="getData">
+  </component>
 </template>
 <script>
   import Widgets from '../widgets'
@@ -61,10 +61,10 @@
       }
     },
     created () {
-      // this.$store.dispatch('update_widget_created', this.widget.id)
+      this.$store.dispatch('update_widget_created', this.widget.id)
     },
     beforeDestroy () {
-      // this.$store.dispatch('update_widget_destroyed', this.widget.id)
+      this.$store.dispatch('update_widget_destroyed', this.widget.id)
     },
     methods: {
       getComp () {

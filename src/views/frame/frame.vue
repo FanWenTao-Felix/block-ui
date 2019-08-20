@@ -12,8 +12,11 @@
       }
     },
     computed: {
-      page(){
-        return this.$store.getters.page
+      widgets() {
+        let page = this.$store.getters.page
+        if(page) {
+          return page.widgets
+        }
       },
       editMode() {
         return this.$store.getters.editMode
@@ -21,11 +24,8 @@
       diyMode() {
         return this.$store.getters.diyMode
       },
-      widgets() {
-        let page = this.$store.getters.page
-        if(page) {
-          return page.widgets
-        }
+      page(){
+        return this.$store.getters.page
       },
       createdWidgets() {
         return this.$store.getters.createdWidgets
@@ -37,8 +37,5 @@
         return this.$store.getters.delWidgets
       }
     },
-    methods: {},
-    created () {
-    }
   }
 </script>

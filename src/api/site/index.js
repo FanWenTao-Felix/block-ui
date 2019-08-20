@@ -24,5 +24,17 @@ export default [
     method: 'saveCustomTheme',
     path: '/customTheme/saveCustomTheme',
     type: 'get'
+  },
+  {
+    name: '获取所有布局信息',
+    method: 'getAllLayOutList',
+    path: '/layout/getAllLayOutList',
+    type: 'get'
+  },
+  {
+    name: '获取个性化页面菜单数据',
+    method: 'getDiyPageTree',
+    path: '/site/getDiyPageTree',
+    type: 'get'
   }
 ]

@@ -170,6 +170,8 @@
           width: '100%',
           heigth: '100%',
           'fullscreen': true,
+          body: () =>
+            import('views/diypage/DiyPage'),
           onclosed(options, dialog, body) { // 当弹出窗口被关闭后调用
             this.$store.dispatch('update_navs', {
               navs: null,
